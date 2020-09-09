@@ -4,11 +4,14 @@ We all need to change code. We would like it to be quick, painless and happy.
 
 In lots of cases, it can be long, error prone and painfull
 
-Coloplast 
+Coloplast - AS400 stock control system, barcode scanners
 
-IBM Dual Foup
+Acceptance tests
+
+IBM Dual Foup - writing to logs and switchable to dummy canned responses.
 
 Bottle Factory
 
 
+DIY Test framework
 
