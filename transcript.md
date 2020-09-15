@@ -13,6 +13,7 @@ IBM Dual Foup - writing to logs and switchable to dummy canned responses.
 Bottle Factory
 
 ## Code Coverage
+Not for metrics but to see whether tests are covering what you think they are.
 
 ## DIY Test framework
 
