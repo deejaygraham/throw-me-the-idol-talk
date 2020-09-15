@@ -12,8 +12,9 @@ IBM Dual Foup - writing to logs and switchable to dummy canned responses.
 
 Bottle Factory
 
+## Code Coverage
 
-DIY Test framework
+## DIY Test framework
 
-Approval Testing
+## Approval Testing
 
