@@ -19,3 +19,13 @@ Not for metrics but to see whether tests are covering what you think they are.
 
 ## Approval Testing
 
+Michael feathers - Legacy Code
+
+Martin Fowler
+
+Make tiny changes every time you touch the code.
+
+Smallest Change possible  - move variable, group better, run tests
+rename variable.
+
+Refactor not rewrite - 
