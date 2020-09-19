@@ -1,6 +1,6 @@
 # Throw me the Idol
 
-Introduction...
+Introduction...Me, job, background 5 minutes
 
 
 As software people, we know that the things we need are constantly in need of change. The world changes around the code and our expectations of what it could and should do also change. If they could be written once and never looked at again, we wouldn't have half the headaches we have. 
@@ -11,11 +11,11 @@ In lots of cases, it can be long, error prone and painful.
 
 This is where I mention the dreaded word "legacy". Legacy for me means that code is useful or valuable, it's doing a worthwhile job for someone and it's something we want to change, tweak or add to without breaking what's currently there. It doesn't mean (but it can) an old COBOL system piled high with dust of the ages. (Knight) It could be a reliable utility or report generator that everyone uses and depends on. It could be built on the most modern framework available but it's a spike that got written over two weeks to prove a technology but that was 3 months and a lot of coffee ago so the definition of legacy is more like just some code that you don't fully understand, trust or even have a ghost of a working model for.
 
-INDIANA 
-
 You as a developer might find yourself in a new job where the last person left leaving you in charge of this awesome system. You may have moved teams or the legacy code you inherit may have even been from your past self who was stressed and in a hurry to meet a deadline and didn't have time for naming and tidying code and documenting and explaining to future self.  
 
-Over the years I've found myself in that situation repeatedly, almost everytime I've moved jobs despite being assured in the interview that this was a greenfield project and there was no old code. Except that as soon as you start to write any code, you are building a legacy which is why for the developer, tests are an important part of keeping a handle on design, coupling, cohesion and all those good things. Often the kind of code we are talking about doesn't have any tests and has usually been proven to work just by some manual inspection in the fist instance and then by having the edges knocked off by minor revisions based on user feedback. But to have confidence in making changes to your new inherited code, you need to have some form of testing in place.
+This can feel a little bit like you are hacking and slashing, trying to make an impact in an overgrown garden or in more severe cases like a certain archaeology professor who just wants to get on with stealing ancient relics and keeps getting interrupted in his work by those troublesome Nazis. Sure, it might look exciting to the outside world and the challenge may actually be exciting for the first few days or weeks but we can leave the cinema after 90 minutes, Indie has to go through this sort of thing time and time again. Rather than worrying about stuff falling on you and everyone wanting to shoot you at one time or another, wouldn't it be nicer to have a little more control and a calmer working environment?
+
+Over the years I've found myself in that situation repeatedly (dealing with diffult software, not rescuing religious artefacts from Nazis), almost everytime I've moved jobs despite being assured in the interview that this was a greenfield project and there was no old code. Except that as soon as you start to write any code, you are building a legacy which is why for the developer, tests are an important part of keeping a handle on design, coupling, cohesion and all those good things. Often the kind of code we are talking about doesn't have any tests and has usually been proven to work just by some manual inspection in the fist instance and then by having the edges knocked off by minor revisions based on user feedback. But to have confidence in making changes to your new inherited code, you need to have some form of testing in place.
 
 Any time you try to search for how do I change this code? Mostly the search results are "just write some tests for it". Which is great advice a bit like this:
 
@@ -65,9 +65,64 @@ Of course it didn't work first time, the timing, the protocol was mostly right b
 
 Once we are satisfactorily disengaged from the outside world, we can work on understanding more about the code and making more changes.
 
+10 minutes
+
+## Debugger is your friend
+
+In a lot of cases, firing up the debugger and running through the code you want to change to get a good idea of what it is doing is goinig to be your first step. But we can't really rely on that to catch all the instances of places where we may be breaking stuff, after all this is a form of manual testing and we know manual testing is a bad thing. So early on we need a way to validate that the application still works the way it always has without resorting to hours of manual inspection. 
 
 ## Text is your friend
-Tests are your friend
+
+One way to handle this is to find a way to convert your program output (or the portion you are interested in changing) to text if it isn't already available. Emily Bache writes about Approval Testing which is the idea that you can capture the fully working output of a program as a "golden copy" before you start work on it. Then every time you make a change, generate a new version of the output and compare it against the original. If there are differences you know you broke something and if not you can have some confidence that your change was for the good. Golden images usually get checked into source control so that we can make sure we aren't accidentally changing them and then missing breakages. 
+
+This could take the form of a log of data out of the program (like we logged earlier) or it could be a report of the internal system, right down to something like a ToString() method which exposes the important inner information in a class that you are working on. Gilded Rose kata often used to practice refactoring skills. Approval test could just be 
+
+Refer you to her book for more details on that.
+
+## Tests are your friend
+
+Obviously unit tests are your friend but often the layout, distribution of the code may means that unit tests aren't easily creatable with standard tools. Either because the test framework doesn't support your application type or the code is not in the shape you would like it to be to be unit testable in the traditional sense.
+
+IN this sort of situation we can roll our own unit test framework and that's not as a big job as it may seem at the outset. I once was handed a monolithic .Net application that broke if you looked at it straight on and couldn't persuade the code to be testable without major changes. In that situation, I wrote a simple assert function and began writing some other methods which invoked the code I was testing.
+
+Ordinarily, the test framework will discover tests usually by method prefix or by attributes at runtime but in this case we are doing that bootstrapping ourselves. 
+public class MyHomemadeTestFramework
+{
+  public static void RunAllTests()
+  {
+  TestScaryObject_Can_DO_Stuff();
+  // ...
+  }
+  public void Assert(bool condition, string message)
+  {
+    if (!condition)
+    {
+      Console.WriteLine(message);
+      Environment.FailFast(message); // terminate the program
+    }
+  }
+ // no attributes
+  public void Test_ScaryObject_Can_DO_Stuff()
+  {
+    var obj = new BigScareyObject();
+     obj.DoStuff();
+
+     Assert(obj.HasDoneStuff, "Scary Object must be able to do stuff");
+  }
+}
+
+static void Main(string[] args)
+{
+  MyHomemadeTestFramework.RunAllTests();
+  
+  // continue with main application logic here
+}
+
+This is a temporary measure to let us get code under control. You can make that testing methods more elaborate over time, adding comparisons for other types etc. and the bonus feature of this approach is that if you match the signatures to your favourite test framework, Jest, NUnit, XUnit, Pester whatever, you can keep these tests around and once the code is in a better shape, lift and shift the functions into a test harness and remove the outer homemade stuff which can be discarded.
+
+
+## Refactoring is your friend
+
 
 Boy Scout rule - make things a little better through naming and re-arrangement
 
@@ -76,16 +131,10 @@ Extract Method or class - make that testable then embed in original place
 Acceptance tests
 
 
-Debugger
-
 ## Code Coverage
 Not for metrics but to see whether tests are covering what you think they are.
 
-## DIY Test framework
-
 ## Approval Testing
-
-Michael feathers - Legacy Code
 
 Martin Fowler
 
