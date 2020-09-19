@@ -71,6 +71,9 @@ Once we are satisfactorily disengaged from the outside world, we can work on und
 
 In a lot of cases, firing up the debugger and running through the code you want to change to get a good idea of what it is doing is goinig to be your first step. But we can't really rely on that to catch all the instances of places where we may be breaking stuff, after all this is a form of manual testing and we know manual testing is a bad thing. So early on we need a way to validate that the application still works the way it always has without resorting to hours of manual inspection. 
 
+## Play is your friend
+If you are in a safe space as far as the application is concerned, and the code is in source control, then HELLO"""""""!!!!!!!!
+
 ## Text is your friend
 
 One way to handle this is to find a way to convert your program output (or the portion you are interested in changing) to text if it isn't already available. Emily Bache writes about Approval Testing which is the idea that you can capture the fully working output of a program as a "golden copy" before you start work on it. Then every time you make a change, generate a new version of the output and compare it against the original. If there are differences you know you broke something and if not you can have some confidence that your change was for the good. Golden images usually get checked into source control so that we can make sure we aren't accidentally changing them and then missing breakages. 
@@ -118,33 +121,40 @@ static void Main(string[] args)
   // continue with main application logic here
 }
 
+The tests you have are always better than the test you wish you had.
+
 This is a temporary measure to let us get code under control. You can make that testing methods more elaborate over time, adding comparisons for other types etc. and the bonus feature of this approach is that if you match the signatures to your favourite test framework, Jest, NUnit, XUnit, Pester whatever, you can keep these tests around and once the code is in a better shape, lift and shift the functions into a test harness and remove the outer homemade stuff which can be discarded.
+
+## Code Coverage
+
+Code coverage tools are very worthwhile here while doing this work. Not for metrics but to see check whether the tests you are writing are really covering the bits of the code you think they are and if you are covering the whole of the piece and not just one or two branches. They don't need to be super expensive, for .Net a tool like AxoCover works really well and is free.
 
 
 ## Refactoring is your friend
 
+Refactor not rewrite
 
-Boy Scout rule - make things a little better through naming and re-arrangement
-
-Extract Method or class - make that testable then embed in original place
-
-Acceptance tests
-
-
-## Code Coverage
-Not for metrics but to see whether tests are covering what you think they are.
-
-## Approval Testing
-
-Martin Fowler
-
-Make tiny changes every time you touch the code.
-
-Smallest Change possible  - move variable, group better, run tests
-rename variable.
-
-Refactor not rewrite - 
+When I talk about refactoring what I mean is the tiniest possible change you could make to improve the code, move a variable, rename a variable or function, rearrange group some code better. Often we say the word refactor and some people hear the word rewrite from scratch or at least large portions. No, tiny tiny changes that over time build up into better code. Better than you had at the start. Make tiny changes every time you touch the code. Always then run the tests you have to confirm.
 
 Refactor - use the built in refactorings that are there because they are reliable and stable so you can't really make a mess. 
 
-Unit Tests, longer acceptance tests, Integration tests, 
+Extract Method or class - make that testable then embed in original place
+
+Six Classic Refactorings
+
+Rename
+Inline
+Extract Method
+Introduce Local Variable
+Introduce Parameter
+Introduce Field
+
+## Conclusion
+
+Hopefully this gives you some starting points for tackling your next inherited project. I hope these techniques will be useful to you and it won't all be snakes, why did it have to be snakes next time?
+
+
+Books
+Emily Bache
+Martin Fowler Refactoring
+Michael Feather Dealing Effectively with Legacy Code
