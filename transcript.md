@@ -157,7 +157,7 @@ Hopefully this gives you some starting points for tackling your next inherited p
 
 
 Resources
-* James Shore - Infrastructure patterns
+* James Shore - Infrastructure patterns - Testing without Mocks https://www.jamesshore.com
 * Emily Bache - http://coding-is-like-cooking.info
 * Martin Fowler Refactoring 2nd Ed Book
 * Michael Feather - Working Effectively with Legacy Code
