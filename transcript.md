@@ -5,13 +5,13 @@ Introduction...Me, job, background 5 minutes
 
 As software people, we know that the things we build are constantly in need of change. The world changes around the code and our expectations of what it could and should do also change. If code could be written once and never looked at again, we wouldn't have half the headaches we have. But also our jobs wouldn't be as interesting or rewarding.
 
-So code needs to change how often and how quickly that's possible depends on how well prepared we are for those changes. We would like it to be quick, painless and happy.
+So code needs to change but how often and how quickly that's possible depends on how well prepared we are for those changes. We would like it to be quick, painless and happy.
 
-In lots of cases, it can be long, error prone and painful.
+In lots of cases, it can be long, error prone and painful. 
 
-This is where I mention the dreaded word "legacy". Legacy for me means that code is useful or valuable, it's doing a worthwhile job for someone and it's something we want to change, tweak or add to without breaking what's currently there. It doesn't mean (but it can) an old COBOL system piled high with dust of the ages. (Knight) It could be a reliable utility or report generator that everyone uses and depends on. It could be built on the most modern framework available but it's a spike that got written over two weeks to prove a technology but that was 3 months and a lot of coffee ago so the definition of legacy is more like just some code that you don't fully understand, trust or even have a ghost of a working model for.
+This is where I mention the dreaded word "legacy". Legacy for me means that code is useful or valuable, it's doing a worthwhile job for someone and it's something we want to change, tweak or add to without breaking what's currently there. It doesn't mean (but it can) an old COBOL system piled high with dust of the ages. (Knight) It could be a reliable utility or report generator that everyone uses and depends on. It could be built on the most modern framework available but it's a spike that got written over two weeks to prove a technology approach ... but that was 3 months and a lot of coffee ago so the definition of legacy is more like just some code that you don't fully understand or trust.
 
-You as a developer might find yourself in a new job where the last person left leaving you in charge of this awesome system. You may have moved teams or the legacy code you inherit may have even been from your past self who was stressed and in a hurry to meet a deadline and didn't have time for naming and tidying code and documenting and explaining to future self.  
+You as a developer might find yourself in a new job becauses the previous programmer left and now you are in charge of this awesome system. You may have moved teams or the legacy code you inherit may have even been from your past self who was stressed and in a hurry to meet a deadline and didn't have time for naming and tidying code and documenting and explaining to future self.  
 
 This can feel a little bit like you are hacking and slashing, trying to make an impact in an overgrown garden or in more severe cases like a certain archaeology professor who just wants to get on with stealing ancient relics and keeps getting interrupted in his work by those troublesome Nazis. Sure, it might look exciting to the outside world and the challenge may actually be exciting for the first few days or weeks but we can leave the cinema after 90 minutes, Indie has to go through this sort of thing time and time again. Rather than worrying about stuff falling on you and everyone wanting to shoot you at one time or another, wouldn't it be nicer to have a little more control and a calmer working environment?
 
@@ -89,6 +89,8 @@ Obviously unit tests are your friend but often the layout, distribution of the c
 IN this sort of situation we can roll our own unit test framework and that's not as a big job as it may seem at the outset. I once was handed a monolithic .Net application that broke if you looked at it straight on and couldn't persuade the code to be testable without major changes. In that situation, I wrote a simple assert function and began writing some other methods which invoked the code I was testing.
 
 Ordinarily, the test framework will discover tests usually by method prefix or by attributes at runtime but in this case we are doing that bootstrapping ourselves. 
+
+
 
 
 public class MyHomemadeTestFramework
