@@ -89,6 +89,8 @@ Obviously unit tests are your friend but often the layout, distribution of the c
 IN this sort of situation we can roll our own unit test framework and that's not as a big job as it may seem at the outset. I once was handed a monolithic .Net application that broke if you looked at it straight on and couldn't persuade the code to be testable without major changes. In that situation, I wrote a simple assert function and began writing some other methods which invoked the code I was testing.
 
 Ordinarily, the test framework will discover tests usually by method prefix or by attributes at runtime but in this case we are doing that bootstrapping ourselves. 
+
+
 public class MyHomemadeTestFramework
 {
   public static void RunAllTests()
@@ -142,19 +144,20 @@ Extract Method or class - make that testable then embed in original place
 
 Six Classic Refactorings
 
-Rename
-Inline
-Extract Method
-Introduce Local Variable
-Introduce Parameter
-Introduce Field
+* Rename
+* Inline
+* Extract Method
+* Introduce Local Variable
+* Introduce Parameter
+* Introduce Field
 
 ## Conclusion
 
 Hopefully this gives you some starting points for tackling your next inherited project. I hope these techniques will be useful to you and it won't all be snakes, why did it have to be snakes next time?
 
 
-Books
-Emily Bache
-Martin Fowler Refactoring
-Michael Feather Dealing Effectively with Legacy Code
+Resources
+* James Shore - Infrastructure patterns
+* Emily Bache - http://coding-is-like-cooking.info
+* Martin Fowler Refactoring 2nd Ed Book
+* Michael Feather - Working Effectively with Legacy Code
