@@ -3,7 +3,7 @@
 Introduction...Me, job, background 5 minutes
 
 
-As software people, we know that the things we need are constantly in need of change. The world changes around the code and our expectations of what it could and should do also change. If they could be written once and never looked at again, we wouldn't have half the headaches we have. 
+As software people, we know that the things we build are constantly in need of change. The world changes around the code and our expectations of what it could and should do also change. If code could be written once and never looked at again, we wouldn't have half the headaches we have. But also our jobs wouldn't be as interesting or rewarding.
 
 So code needs to change how often and how quickly that's possible depends on how well prepared we are for those changes. We would like it to be quick, painless and happy.
 
