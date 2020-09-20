@@ -151,6 +151,8 @@ Six Classic Refactorings
 * Introduce Parameter
 * Introduce Field
 
+You can actually get an awful lot of done with just renaming stuff, extracting methods and moving things around. Moving variables closer to where they are used, reducing the scope of variables, that kind of thing. Refactoring is another huge topic and maybe the subject for my next talk so I'll leave it there.
+
 ## Conclusion
 
 Hopefully this gives you some starting points for tackling your next inherited project. I hope these techniques will be useful to you and it won't all be snakes, why did it have to be snakes next time?
