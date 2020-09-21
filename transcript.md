@@ -62,7 +62,7 @@ Coloplast - AS400 stock control system, barcode scanners
 
 At another company even earlier we worked on motion control software for the glass industry and that was even more dangerous because accidentally forgetting to disconnect our code meant we could be pushing super hot glass around the factory with some serious consequences for safety.
 
-It doesn;t always have to be so dramatic, it can be as simple as we don't want to be overwriting database records with test data accidentally or overwriting or deleting files on your hard drive.
+It doesn;t always have to be so dramatic, it can be as simple as we don't want to be overwriting database records with test data accidentally or overwriting or deleting files on your hard drive. Be especially careful of code that sends emails or validates credit cards, that's a good way to get yourself banned from many services by using them too much by accident. 
 
 -----------------------------------------------
 
@@ -129,6 +129,9 @@ Refer you to her book for more details on that.
 -----------------------------------------------
 
 ## Tests are your friend
+
+You must have tests
+
 
 Obviously unit tests are your friend but often the layout, distribution of the code may means that unit tests aren't easily creatable with standard tools. Either because the test framework doesn't support your application structure or the code is not in the shape to wrap meaningful tests around it to be unit testable in the traditional sense.
 
@@ -201,6 +204,11 @@ When I talk about refactoring what I mean is the tiniest possible change you cou
 
 Refactor - use the built in refactorings that are there because they are reliable and stable so you can't really make a mess. 
 
+
+-----------------------------------------------
+
+Deep nesting, bad names (what does that mean?) improper scope, long methods
+
 -----------------------------------------------
 
 Six Classic Refactorings
@@ -215,6 +223,11 @@ Six Classic Refactorings
 -----------------------------------------------
 
 You can actually get an awful lot of done with just renaming stuff, extracting methods and moving things around. Moving variables closer to where they are used, reducing the scope of variables, that kind of thing. 
+
+-----------------------------------------------
+
+Be aware of dead code. Unused code (code that was used at one time but changes have left it in and worked around it) or commented out code are good candidates to remove early on . This makes structure harder to see and harder to read and understand what is going on. 
+
 
 -----------------------------------------------
 
